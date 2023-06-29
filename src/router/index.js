@@ -16,12 +16,19 @@ const router = createRouter({
       component: () => import("@/views/order/order.vue")
     },
     {
-      path: "/collect",
-      component: () => import("@/views/collect/collect.vue")
+      path: "/favor",
+      component: () => import("@/views/favor/favor.vue")
     },
     {
       path: "/message",
       component: () => import("@/views/message/message.vue")
+    },
+    {
+      path: "/city",
+      component: () => import("@/views/city/city.vue"),
+      meta: {
+        hiddenTar: true
+      }
     }
   ]
 })

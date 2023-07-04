@@ -30,6 +30,20 @@
       :show-confirm="false"
       @confirm="onConfirm" 
     />
+    <div class="section title">
+      <div class="start">价格不限</div>
+      <div class="end">人数不限</div>
+    </div>
+    <div class="section title">
+      关键字/位置/民宿名
+    </div>
+    <div class="section hot-suggest">
+      <template v-for="(item,index) in hotSuggest" :key="index">
+        <div class="suggest" :style="{color: item.tagText.color, background: item.tagText.background.color}">
+          {{ item.tagText.text }}
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -75,10 +89,18 @@ const onConfirm = (value) => {
   stayCount.value = getDiffDays(selectStartDate, selectEndDate)
   showCalendar.value = false
 }
+
+defineProps({
+  hotSuggest: {
+    type: Array,
+    default: []
+  }
+})
 </script>
 
 <style lang="less" scoped>
 .search {
+  
   .localtion {
     display: flex;
     align-items: center;
@@ -108,6 +130,7 @@ const onConfirm = (value) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 0 20px;
     .end {
       margin-right: 30px;
@@ -122,6 +145,21 @@ const onConfirm = (value) => {
           font-size: 16px;
           margin-top: 3px;
         }
+      }
+    }
+    &.title {
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+    &.hot-suggest {
+      justify-content: start;
+      .suggest {
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 10px;
+        font-size: 12px;
       }
     }
   }

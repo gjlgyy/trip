@@ -44,6 +44,9 @@
         </div>
       </template>
     </div>
+    <div class="section search-box" @click="searchClick">
+      <div class="btn">开始搜索</div>
+    </div>
   </div>
 </template>
 
@@ -96,6 +99,17 @@ defineProps({
     default: []
   }
 })
+
+const searchClick = () => {
+  router.push({
+    path: "/search",
+    query: {
+      startDate: startDate.value,
+      endDate: endDate.value,
+      currentCity: currentCity.value.cityName
+    }
+  })
+}
 </script>
 
 <style lang="less" scoped>
@@ -160,6 +174,21 @@ defineProps({
         margin: 5px;
         border-radius: 10px;
         font-size: 12px;
+      }
+    }
+    &.search-box {
+      height: 40px;
+      margin: 10px 20px 20px 20px;
+      background-image: var(--theme-linear-gradient);
+      color: #fff;
+      border-radius: 50px;
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
       }
     }
   }

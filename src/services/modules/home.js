@@ -5,3 +5,8 @@ export function getHotSuggest() {
     url: "/home/hotSuggests"
   })
 }
+export function getCategory() {
+  return JLRequest.get({
+    url: "/home/categories"
+  })
+}

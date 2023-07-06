@@ -29,6 +29,13 @@ const router = createRouter({
       meta: {
         hiddenTar: true
       }
+    },
+    {
+      path: "/search",
+      component: () => import("@/views/search/search.vue"),
+      meta: {
+        hiddenTar: true
+      }
     }
   ]
 })
